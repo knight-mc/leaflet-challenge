@@ -60,6 +60,6 @@ function createFeatures(eqData) {
             fillColor: choosecolor(depth),
             fillOpacity: 0.75,
             radius: getSize(magnitude)
-        }).bindPopup().addTo(myMap);
+        }).bindPopup("<h3>Type: " + epicenter.properties.type + "</h3><h3>Location: " + epicenter.properties.place + "</h3><h3>Coordinates: " + coordinates + "</h3><h3>Magnitude: " + magnitude + "</h3><h3>Depth: " + depth + "</h3>").addTo(myMap);
     }
 }
