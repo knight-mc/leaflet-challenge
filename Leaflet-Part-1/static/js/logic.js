@@ -46,6 +46,19 @@ d3.json(eqURL).then(function(data) {
     let eqData = data.features;
     //console.log(eqData);
     createFeatures(eqData);
+
+    let legend = L.control({position: "bottomright"});
+    legend.onAdd = function() {
+        let div = L.DomUtil.create("div", "info legend");
+        let depRange = [-10,10,30, 50, 70, 90];
+
+        for(let j = 0; j < depRange.length; j++){
+            div.innerHTML+="<i style='background:"+ choosecolor((depRange[j])+1)+"'></i>"+ depRange[j]+(depRange[j+1] ? "&ndash;" + depRange[j + 1] + "<br>" : "+");
+        }
+        return div;
+    }
+    legend.addTo(myMap);
+
 });
 
 function createFeatures(eqData) {
